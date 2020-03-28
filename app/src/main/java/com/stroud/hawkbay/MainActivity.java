@@ -1,8 +1,10 @@
-package com.example.myapplication;
+package com.stroud.hawkbay;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.stroud.hawkbay.R;
 
 public class MainActivity extends AppCompatActivity {
 
