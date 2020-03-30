@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">hBay</string>
+    <string name="email">Email</string>
+    <string name="password_label">Password</string>
+    <string name="welcome">Welcome back %1$s!</string>
+    <string name="logout">Logout</string>
+    <string name="login">Login</string>
+    <string name="register"> -Create Account- </string>
 </resources>
