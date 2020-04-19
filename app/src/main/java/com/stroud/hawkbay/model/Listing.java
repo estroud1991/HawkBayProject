@@ -24,17 +24,20 @@ public class Listing {
     public static final String FIELD_PRICE = "price";
     public static final String FIELD_DESCRIPTION = "description";
     public static final String FIELD_NAME = "name";
+    public static final String FIELD_EMAIL = "email";
 
     private String name;
     private String description;
     private String price;
+    private String sellerEmail;
 
     public Listing() {}
 
-    public Listing(String name,String description, String price) {
+    public Listing(String name,String description, String price, String sellerEmail) {
         this.name = name;
         this.description = description;
         this.price = price;
+        this.sellerEmail = sellerEmail;
     }
 
     public String getName() {
@@ -59,6 +62,12 @@ public class Listing {
 
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    public String getSellerEmail(){return sellerEmail;}
+
+    public void setSellerEmail(String email){
+        this.sellerEmail = email;
     }
 
 }

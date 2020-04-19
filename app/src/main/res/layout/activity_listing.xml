@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E0E0E0"
+    tools:context="com.stroud.hawkbay.ListingActivity">
+
+
+        <ImageView
+            android:id="@+id/listing_image"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/item"
+            tools:src="@drawable/item" />
+
+        <TextView
+            android:id="@+id/listing_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_alignBottom="@id/listing_image"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            tools:text="Example Listing" />
+
+        <TextView
+            android:id="@+id/seller_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:gravity="center"
+            android:layout_alignBottom="@id/listing_image"
+            android:layout_toEndOf="@id/listing_name"
+            android:textColor="@color/black"
+            tools:text="example@gmail.com" />
+
+        <TextView
+            android:id="@+id/listing_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            tools:text="500" />
+
+        <TextView
+            android:id="@+id/listing_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_below="@id/listing_image"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            tools:text="Example" />
+
+
+</RelativeLayout>

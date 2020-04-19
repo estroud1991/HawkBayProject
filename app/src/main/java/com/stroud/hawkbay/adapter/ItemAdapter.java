@@ -1,19 +1,5 @@
-/**
- * Copyright 2017 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
- package com.stroud.hawkbay.adapter;
+
+package com.stroud.hawkbay.adapter;
 
 import android.content.res.Resources;
 import android.view.LayoutInflater;
@@ -31,14 +17,11 @@ import com.stroud.hawkbay.R;
 import com.stroud.hawkbay.model.Listing;
 
 
-/**
- * RecyclerView adapter for listings.
- */
 public class ItemAdapter extends FirestoreAdapter<ItemAdapter.ViewHolder> {
 
     public interface OnItemSelectedListener {
 
-        void onItemSelected(DocumentSnapshot restaurant);
+        void onListingSelected(DocumentSnapshot listing);
 
     }
 
@@ -65,10 +48,8 @@ public class ItemAdapter extends FirestoreAdapter<ItemAdapter.ViewHolder> {
 
         ImageView imageView;
         TextView nameView;
-        TextView numRatingsView;
         TextView priceView;
         TextView descView;
-        TextView cityView;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -86,18 +67,19 @@ public class ItemAdapter extends FirestoreAdapter<ItemAdapter.ViewHolder> {
             Resources resources = itemView.getResources();
 
             nameView.setText(listing.getName());
-            priceView.setText(listing.getPrice());
+            priceView.setText("$" + listing.getPrice());
             descView.setText(listing.getDescription());
 
             // Click listener
             itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (listener != null) {
-                        listener.onItemSelected(snapshot);
-                    }
-                }
-            });
+                                            @Override
+                                            public void onClick(View view) {
+                                                if (listener != null) {
+                                                    listener.onListingSelected(snapshot);
+                                                }
+                                            }
+                                        }
+            );
         }
 
     }

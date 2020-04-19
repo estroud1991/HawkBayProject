@@ -24,6 +24,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
+    private static final String EXTRA_USERS = "";
     ;
     private FirebaseAuth mAuth;
     private ConstraintLayout mLoggedInGroup;
@@ -50,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    //User action functions
     public void signIn(View view) {
         if (!validateForm()) {
             return;
@@ -80,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void goHome(View view){
         Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+        intent.putExtra(EXTRA_USERS, mAuth.getCurrentUser().getEmail());
         startActivity(intent);
     }
 
@@ -115,7 +116,6 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
-    //UI and validation
     private void updateUI(FirebaseUser currentUser) {
         if (currentUser != null) {
             mLoggedOutGroup.setVisibility(View.GONE);

@@ -6,24 +6,22 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
+
 import com.stroud.hawkbay.adapter.ItemAdapter;
 
 public class HomeActivity extends AppCompatActivity implements
         ItemAdapter.OnItemSelectedListener {
 
     private static final String TAG = "HomeActivity";
+    private static final String EXTRA_USERS = "" ;
 
     private RecyclerView mListingsRecycler;
 
@@ -34,6 +32,12 @@ public class HomeActivity extends AppCompatActivity implements
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        String userEmail = getIntent().getExtras().getString(EXTRA_USERS);
+
+        Toast toast=Toast.makeText(getApplicationContext(),"Welcome back " + userEmail + "!",Toast.LENGTH_SHORT);
+        toast.show();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
@@ -50,14 +54,12 @@ public class HomeActivity extends AppCompatActivity implements
 
             @Override
             protected void onDataChanged() {
-                // Show/hide content if the query returns empty.
                     mListingsRecycler.setVisibility(View.VISIBLE);
                 }
 
 
             @Override
             protected void onError(FirebaseFirestoreException e) {
-                // Show a snackbar on errors
                 Snackbar.make(findViewById(android.R.id.content),
                         "Error: check logs for info.", Snackbar.LENGTH_LONG).show();
             }
@@ -85,18 +87,21 @@ public class HomeActivity extends AppCompatActivity implements
         }
     }
 
-    public void newListing(View view) {
-        Intent intent = new Intent(HomeActivity.this, ListingCreateActivity.class);
+    @Override
+    public void onListingSelected(DocumentSnapshot listing) {
+        Intent intent = new Intent(this, ListingActivity.class);
+        intent.putExtra(ListingActivity.LISTING_ID, listing.getId());
+
         startActivity(intent);
     }
 
-    private void initFirestore() {
-
+    public void newListing(View view) {
+        String userEmail = getIntent().getExtras().getString(EXTRA_USERS);
+        Intent intent = new Intent(HomeActivity.this, ListingCreateActivity.class);
+        intent.putExtra(ListingCreateActivity.EXTRA_EMAIL, userEmail);
+        startActivity(intent);
     }
 
 
-    @Override
-    public void onItemSelected(DocumentSnapshot item) {
 
-    }
 }
