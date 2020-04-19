@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Card xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <ImageView
+        android:id="@+id/item_image"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="#757575"
+        android:scaleType="centerCrop"
+        android:src="@drawable/item"
+        />
+
+
+    <TextView
+        android:id="@+id/item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/item_image"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="4dp"
+        android:layout_toRightOf="@+id/item_image"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/black"
+        tools:text="PS4" />
+
+    <TextView
+        android:id="@+id/item_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/item_name"
+        android:layout_alignLeft="@+id/item_name"
+        android:layout_marginLeft="-5dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginBottom="4dp"
+        android:text="$200"
+        android:textColor="@color/black"
+        />
+
+    <TextView
+        android:id="@+id/item_description"
+        android:layout_width="245dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="24dp"
+        android:layout_toEndOf="@+id/item_name"
+        tools:text="JRPG Console"
+        android:textColor="@color/black"
+        />
+
+
+</Card>
