@@ -26,7 +26,6 @@ public class HomeActivity extends AppCompatActivity implements
     private static final String TAG = "HomeActivity";
 
     private RecyclerView mListingsRecycler;
-    private ViewGroup mEmptyView;
 
     private FirebaseFirestore mFirestore;
     private Query mQuery;
@@ -53,7 +52,6 @@ public class HomeActivity extends AppCompatActivity implements
             protected void onDataChanged() {
                 // Show/hide content if the query returns empty.
                     mListingsRecycler.setVisibility(View.VISIBLE);
-                    mEmptyView.setVisibility(View.GONE);
                 }
 
 
@@ -68,6 +66,23 @@ public class HomeActivity extends AppCompatActivity implements
         mListingsRecycler.setLayoutManager(new LinearLayoutManager(this));
         mListingsRecycler.setAdapter(mAdapter);
 
+
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        if (mAdapter != null) {
+            mAdapter.startListening();
+        }
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mAdapter != null) {
+            mAdapter.stopListening();
+        }
     }
 
     public void newListing(View view) {
