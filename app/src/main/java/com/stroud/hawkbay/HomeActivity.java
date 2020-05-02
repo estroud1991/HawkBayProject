@@ -89,9 +89,10 @@ public class HomeActivity extends AppCompatActivity implements
 
     @Override
     public void onListingSelected(DocumentSnapshot listing) {
+        String userEmail = getIntent().getExtras().getString(EXTRA_USERS);
         Intent intent = new Intent(this, ListingActivity.class);
         intent.putExtra(ListingActivity.LISTING_ID, listing.getId());
-
+        //intent.putExtra(ListingCreateActivity.EXTRA_EMAIL, userEmail);
         startActivity(intent);
     }
 
