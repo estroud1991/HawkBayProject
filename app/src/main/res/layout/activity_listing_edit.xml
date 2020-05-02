@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ListingEditActivity">
+
+    <TextView
+        android:id="@+id/item_title_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="124dp"
+        android:paddingBottom="10dp"
+        android:text="Item Name:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/price_label_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="56dp"
+        android:paddingBottom="10dp"
+        android:text="Price:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item_title_edit" />
+
+    <TextView
+        android:id="@id/description_label_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="44dp"
+        android:paddingBottom="10dp"
+        android:text="Description:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/price_label_edit" />
+
+    <EditText
+        android:id="@+id/name_edit_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="115dp"
+        android:ems="10"
+        android:hint="enter listing title"
+        android:text=""
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/item_title_edit"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/price_edit_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="36dp"
+        android:ems="10"
+        android:text=""
+        android:hint="enter USD price"
+        android:inputType="number"
+        app:layout_constraintStart_toEndOf="@+id/price_label_edit"
+        app:layout_constraintTop_toBottomOf="@+id/name_edit_field" />
+
+    <EditText
+        android:id="@+id/description_edit_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="enter a description"
+        android:text=""
+        android:inputType="textMultiLine"
+        app:layout_constraintStart_toEndOf="@+id/description_label_edit"
+        app:layout_constraintTop_toBottomOf="@+id/price_edit_field" />
+
+    <Button
+        android:id="@+id/button_update"
+        style="@style/FirebaseUI.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="161dp"
+        android:layout_marginTop="215dp"
+        android:layout_marginEnd="162dp"
+        android:layout_marginBottom="154dp"
+        android:backgroundTint="#DF9696"
+        android:text="update"
+        android:onClick="updateListing"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/description_edit_field" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,9 +1,13 @@
 package com.stroud.hawkbay;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -19,12 +23,14 @@ public class ListingActivity extends AppCompatActivity implements
 
     public static final String LISTING_ID = "";
     private static final String TAG = "ListingDetail";
+    private static final String EXTRA_EMAIL = "";
 
     private ImageView mImageView;
     private TextView mNameView;
     private TextView mDescView;
     private TextView mPriceView;
     private TextView mEmailView;
+    private boolean delete = false;
 
     private FirebaseFirestore mFirestore;
     private DocumentReference mListingRef;
@@ -82,12 +88,28 @@ public class ListingActivity extends AppCompatActivity implements
     }
 
     private void onListingLoaded(Listing listing) {
+
+
         mNameView.setText(listing.getName());
         mEmailView.setText(listing.getSellerEmail());
         mDescView.setText(listing.getDescription());
         mPriceView.setText("$"+listing.getPrice());
         mEmailView.setText(listing.getSellerEmail());
 
+    }
+    public void editStart(View view){
+        String userEmail = getIntent().getExtras().getString(EXTRA_EMAIL);
+        Intent intent = new Intent(this, ListingEditActivity.class);
+        intent.putExtra(ListingActivity.LISTING_ID, mListingRef.getId());
+        intent.putExtra(ListingActivity.EXTRA_EMAIL, userEmail);
+        startActivity(intent);
+    }
+
+    public void deleteListing(View view){
+        Toast toast=Toast.makeText(getApplicationContext(),"Listing Deleted!",Toast.LENGTH_SHORT);
+        delete = true;
+        toast.show();
+        mListingRef.delete();
     }
 
 }

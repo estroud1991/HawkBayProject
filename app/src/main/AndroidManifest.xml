@@ -8,6 +8,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ListingCreateActivity"></activity>
+        <activity android:name=".ListingEditActivity"></activity>
         <activity android:name=".ListingActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
