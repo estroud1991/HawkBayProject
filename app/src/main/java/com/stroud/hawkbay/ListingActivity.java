@@ -1,6 +1,7 @@
 package com.stroud.hawkbay;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -35,6 +36,7 @@ public class ListingActivity extends AppCompatActivity implements
     private TextView mEmailView;
     private Button mDeleteButton;
     private Button mEditButton;
+    private Button mMessageButton;
 
     private FirebaseAuth mAuth;
     private FirebaseFirestore mFirestore;
@@ -52,6 +54,7 @@ public class ListingActivity extends AppCompatActivity implements
         mEmailView = findViewById(R.id.seller_email);
         mEditButton = findViewById(R.id.edit_button);
         mDeleteButton = findViewById(R.id.delete_button);
+        mMessageButton = findViewById(R.id.message_button);
 
 
         String listingId = getIntent().getExtras().getString(LISTING_ID);
@@ -108,6 +111,7 @@ public class ListingActivity extends AppCompatActivity implements
             if (mAuth.getCurrentUser().getEmail().equals(listing.getSellerEmail())){
                 mEditButton.setEnabled(true);
                 mDeleteButton.setEnabled(true);
+                mMessageButton.setEnabled(false);
             }
         }
         catch(NullPointerException e){
@@ -129,4 +133,12 @@ public class ListingActivity extends AppCompatActivity implements
         toast.show();
     }
 
+    public void messageSeller(View view) {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setData(Uri.parse("mailto:"));
+        intent.setType("text/plain");
+        intent.putExtra(EXTRA_EMAIL,mEmailView.getText());
+        intent.putExtra(Intent.EXTRA_SUBJECT,mNameView.getText());
+        startActivity(intent);
+    }
 }
